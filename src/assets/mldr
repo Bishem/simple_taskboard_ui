@@ -1,0 +1,8 @@
+# Modèle créé le : Mon Mar 04 12:49:10 CET 2019 
+user (id_user, prenom_user, nom_user, initiales_user, email_user, password_user, date_insert_user, date_maj_user, is_admin_user) 
+feature (id_feature, title_feature, description_feature, date_insert_feature, date_start_feature, date_maj_feature, date_end_feature, #id_project, #id_state) 
+event (id_event, description_event, date_insert_event, #id_status, #id_user, #id_task) 
+state (id_state, label_state) 
+project (id_project, title_project, description_project, date_insert_project, date_start_project, date_estimated_end_project, date_maj_project, date_end_project, #id_state) 
+task (id_task, title_task, description_task, encountered_difficulties_task, time_estimated_end_task, time_end_task, date_insert_task, date_select_task, date_maj_task, date_end_task, #id_feature, #id_state) 
+status (id_status, label_status) 
