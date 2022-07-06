@@ -1,0 +1,79 @@
+DROP TABLE IF EXISTS user ;
+CREATE TABLE user (id_user BIGINT AUTO_INCREMENT NOT NULL,
+prenom_user VARCHAR,
+nom_user VARCHAR,
+initiales_user VARCHAR,
+email_user VARCHAR,
+password_user VARCHAR,
+date_insert_user DATETIME,
+date_maj_user DATETIME,
+is_admin_user BOOLEAN,
+PRIMARY KEY (id_user)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS feature ;
+CREATE TABLE feature (id_feature BIGINT AUTO_INCREMENT NOT NULL,
+title_feature VARCHAR,
+description_feature TEXT,
+date_insert_feature DATETIME,
+date_start_feature DATETIME,
+date_maj_feature DATETIME,
+date_end_feature DATETIME,
+id_project **NOT FOUND**,
+id_state **NOT FOUND**,
+PRIMARY KEY (id_feature)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS event ;
+CREATE TABLE event (id_event BIGINT AUTO_INCREMENT NOT NULL,
+description_event TEXT,
+date_insert_event DATETIME,
+id_status **NOT FOUND**,
+id_user **NOT FOUND**,
+id_task **NOT FOUND**,
+PRIMARY KEY (id_event)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS state ;
+CREATE TABLE state (id_state BIGINT AUTO_INCREMENT NOT NULL,
+label_state VARCHAR,
+PRIMARY KEY (id_state)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS project ;
+CREATE TABLE project (id_project BIGINT AUTO_INCREMENT NOT NULL,
+title_project VARCHAR,
+description_project TEXT,
+date_insert_project DATETIME,
+date_start_project DATETIME,
+date_estimated_end_project DATETIME,
+date_maj_project DATETIME,
+date_end_project DATETIME,
+id_state **NOT FOUND**,
+PRIMARY KEY (id_project)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS task ;
+CREATE TABLE task (id_task BIGINT AUTO_INCREMENT NOT NULL,
+title_task VARCHAR,
+description_task TEXT,
+encountered_difficulties_task TEXT,
+time_estimated_end_task TIMESTAMP,
+time_end_task TIMESTAMP,
+date_insert_task DATETIME,
+date_select_task DATETIME,
+date_maj_task DATETIME,
+date_end_task DATETIME,
+id_feature **NOT FOUND**,
+id_state **NOT FOUND**,
+PRIMARY KEY (id_task)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS status ;
+CREATE TABLE status (id_status BIGINT AUTO_INCREMENT NOT NULL,
+label_status VARCHAR,
+PRIMARY KEY (id_status)) ENGINE=InnoDB;
+
+ALTER TABLE feature ADD CONSTRAINT FK_feature_id_project FOREIGN KEY (id_project) REFERENCES project (id_project);
+
+ALTER TABLE feature ADD CONSTRAINT FK_feature_id_state FOREIGN KEY (id_state) REFERENCES state (id_state);
+ALTER TABLE event ADD CONSTRAINT FK_event_id_status FOREIGN KEY (id_status) REFERENCES status (id_status);
+ALTER TABLE event ADD CONSTRAINT FK_event_id_user FOREIGN KEY (id_user) REFERENCES user (id_user);
+ALTER TABLE event ADD CONSTRAINT FK_event_id_task FOREIGN KEY (id_task) REFERENCES task (id_task);
+ALTER TABLE project ADD CONSTRAINT FK_project_id_state FOREIGN KEY (id_state) REFERENCES state (id_state);
+ALTER TABLE task ADD CONSTRAINT FK_task_id_feature FOREIGN KEY (id_feature) REFERENCES feature (id_feature);
+ALTER TABLE task ADD CONSTRAINT FK_task_id_state FOREIGN KEY (id_state) REFERENCES state (id_state);

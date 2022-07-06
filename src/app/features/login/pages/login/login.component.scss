@@ -1,0 +1,32 @@
+section {
+  background: lightgoldenrodyellow;
+  min-height: 100vh;
+
+  .login-header {
+    width: 100vw;
+    min-height: 150px;
+
+    .name-holder {
+      min-height: 150px;
+      line-height: 150px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: bolder;
+      font-size: xx-large;
+    }
+  }
+
+  .login-content {
+    width: 100vw;
+
+    * {
+      width: 350px;
+      height: 400px;
+      margin: 0 10px;
+    }
+  }
+}
+
+
+
+

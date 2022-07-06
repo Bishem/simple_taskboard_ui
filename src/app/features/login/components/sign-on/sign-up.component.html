@@ -1,0 +1,30 @@
+<section fxFill fxLayout="column wrap" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <form fxFill [formGroup]="signUpForm" autocomplete="off" novalidate (ngSubmit)="signUp()" fxLayout="column wrap"
+          fxLayoutAlign="end center" fxLayoutGap="10px">
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Firstname" formControlName="firstname" id="firstname">
+          <mat-error *ngIf="hasError('firstname', 'required')">Firstname is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Lastname" formControlName="lastname" id="lastname">
+          <mat-error *ngIf="hasError('lastname', 'required')">Lastname is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+          <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+          <mat-error *ngIf="hasError('email', 'email')">Incorrect Format</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Password" formControlName="password" id="password">
+          <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="signUpForm.invalid">Sign Up</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

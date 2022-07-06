@@ -1,0 +1,33 @@
+section {
+  .header-content {
+    width: 100vw;
+    min-height: 100px;
+
+    .name-holder {
+      margin: 0 50px;
+      min-height: 100px;
+      font-weight: bolder;
+      font-size: xx-large;
+    }
+
+    .profile {
+      margin: 0 50px;
+      min-height: 100px;
+      min-width: 100px;
+    }
+  }
+
+  .taskboard-options {
+    width: 100vw;
+    min-height: 50px;
+    background: #2e2e2e;
+
+    .toggle-group {
+      margin: 0 25px;
+    }
+
+    .add-task-button {
+      margin: 0 25px;
+    }
+  }
+}
